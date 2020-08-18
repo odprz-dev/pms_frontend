@@ -25,6 +25,9 @@
         <mat-error *ngIf="userForm.controls.Email.hasError('required') && userForm.controls.Email.touched">
           Este campo es requerido
         </mat-error>
+        <mat-error *ngIf="userForm.controls.Email.hasError('email') && userForm.controls.Email.touched">
+          El correo debe tener formato @mail.com
+        </mat-error>
       </mat-form-field>
     </div>
   </mat-grid-tile>
@@ -46,6 +49,9 @@
         <input matInput  type="password" placeholder="Password" formControlName="Password" required>
         <mat-error *ngIf="userForm.controls.Password.hasError('required') && userForm.controls.Password.touched">
           Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.Password.hasError('pattern') && userForm.controls.Password.touched">
+          Ingresar al menos un caracter en mayuscula un caracter en minuscula un simbolo y un numero.
         </mat-error>
       </mat-form-field>
     </div>

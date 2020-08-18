@@ -38,11 +38,11 @@ export class UserModalComponent implements OnInit {
     })
     this.userForm = this.fb.group({
       PkIdUser:[],
-      UserName: [, [Validators.required]],
+      UserName: [, [Validators.required, Validators.minLength(7)]],
       Email: [, [Validators.required, Validators.email]],
       CtStatus: [true],
       FkIdSexo: [1],
-      Password: []
+      Password: [,[Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{10,}$")]]
     });
 
     this.userForm.patchValue(this._data);
