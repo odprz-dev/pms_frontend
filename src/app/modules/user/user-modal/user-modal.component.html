@@ -50,6 +50,9 @@
         <mat-error *ngIf="userForm.controls.Password.hasError('required') && userForm.controls.Password.touched">
           Este campo es requerido
         </mat-error>
+        <mat-error *ngIf="userForm.controls.Password.hasError('minlength') && userForm.controls.Password.touched">
+          El password debe tener al menos 10 caracteres.
+        </mat-error>
         <mat-error *ngIf="userForm.controls.Password.hasError('pattern') && userForm.controls.Password.touched">
           Ingresar al menos un caracter en mayuscula un caracter en minuscula un simbolo y un numero.
         </mat-error>

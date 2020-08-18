@@ -42,7 +42,7 @@ export class UserModalComponent implements OnInit {
       Email: [, [Validators.required, Validators.email]],
       CtStatus: [true],
       FkIdSexo: [1],
-      Password: [,[Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{10,}$")]]
+      Password: [,[Validators.minLength(10), Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,}$")]]
     });
 
     this.userForm.patchValue(this._data);
