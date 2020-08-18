@@ -18,3 +18,9 @@ export interface UserEdit{
   LastPassword: string;
   NewPassword: string;
 }
+
+
+export interface UserLogin{
+  Usuario: string;
+  Password: string;
+}
