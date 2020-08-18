@@ -1,0 +1,63 @@
+<div>
+  <div class="add-title">
+    <h2 class="header">Agregar nuevo usuario</h2>
+  </div>
+<div>
+<form [formGroup]="userForm" (change)="formChanged()" (ngSubmit)="saveUser()">
+<mat-grid-list [cols]="breakPoint" rowHeight="85px" (window:resize)="onResize($event)">
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput placeholder="UserName" formControlName="UserName" required>
+        <mat-error *ngIf="userForm.controls.UserName.hasError('required') && userForm.controls.UserName.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.UserName.hasError && userForm.controls.UserName.touched">
+          Por favor ingresa un valor valido con caracteres
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="Email" required>
+        <mat-error *ngIf="userForm.controls.Email.hasError('required') && userForm.controls.Email.touched">
+          Este campo es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput placeholder="FkIdSexo" formControlName="FkIdSexo" required>
+        <mat-error *ngIf="userForm.controls.FkIdSexo.hasError('required') && userForm.controls.FkIdSexo.touched">
+          Este campo es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput  type="password" placeholder="Password" formControlName="Password" required>
+        <mat-error *ngIf="userForm.controls.Password.hasError('required') && userForm.controls.Password.touched">
+          Este campo es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+
+</mat-grid-list>
+<div class="btn-sec">
+  <button mat-raised-button type="submit" color="primary" class="Update-btn" [disabled]="userForm.invalid">Guardar</button>
+  <button mat-raised-button type="button" class="Discard-btn" (click)="openDialog()">Cancelar</button>
+</div>
+
+</form>
+<!-- <pre>{{userForm.value | json}}</pre> -->
+</div>

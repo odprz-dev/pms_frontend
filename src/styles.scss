@@ -12,7 +12,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$PmsWeb-primary: mat-palette($mat-indigo);
+
+
+$PmsWeb-primary: mat-palette($mat-cyan);
 $PmsWeb-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -30,3 +32,94 @@ $PmsWeb-theme: mat-light-theme($PmsWeb-primary, $PmsWeb-accent, $PmsWeb-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+// CRUD Table
+table {
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.filter-input-table {
+  width: 94.5%;
+}
+.basic-container {
+  padding: 5px;
+}
+
+.action-table-buttons{
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+}
+
+.export-table-button{
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
+}
+.crud-table {
+  width: 98vw;
+  height: 57vh;
+  overflow: auto;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+
+div .empty-table{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p{
+    padding-top: 10%;
+    margin: 0 auto;
+  }
+}
+
+.toolbar-title {
+  z-index: -1 !important;
+}
+///////////////////////////
+
+
+// MODAL FORM
+mat-dialog-container {
+  mat-form-field{
+    width: 90%;
+  }
+
+  .text-inside {
+    position: absolute;
+    left: 5px;
+    width: 100%;
+  }
+
+  .btn-sec {
+    margin-right: 5rem !important;
+    text-align: right;
+    margin-top: 1.5em;
+  }
+  .Update-btn {
+    margin: 5px;
+  }
+  .Discard-btn {
+    margin: 5px;
+  }
+
+  @media (max-width: 800px) {
+    .btn-sec {
+      margin-right: 1rem !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .btn-sec {
+      margin-right: 1rem !important;
+    }
+  }
+}

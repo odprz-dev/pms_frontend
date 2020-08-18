@@ -12,4 +12,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // TODO: Cargar informacion del Usuario Actual
+
 }
