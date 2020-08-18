@@ -16,6 +16,8 @@ import { DeleteFormComponent } from '../../helpers/delete-form/delete-form.compo
 })
 export class UsuariosComponent implements OnInit {
 
+  userSelected: User;
+
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
@@ -72,7 +74,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   updateData(data: User){
-      const updateItem = this.userList.find(item => item.PkIdUser === data.PkIdUser);
+      const updateItem = this.userList.find(item => item.pkIdUser === data.pkIdUser);
       const index = this.userList.findIndex(i=> i === updateItem);
       this.userList[index] = data;
       this.dataSource.data = this.userList;
@@ -80,22 +82,25 @@ export class UsuariosComponent implements OnInit {
 
 
   openDeleteDialog(data: User){
+    this.userSelected = data;
+    console.log(this.userSelected);
     const deleteDialogRef = this.dialog.open(DeleteFormComponent,{width:'350px', disableClose: true});
     deleteDialogRef.componentInstance.confirmDelete
       .subscribe(()=>{
-        console.log(`El item numero ${data.PkIdUser} se ha borrado satisfactoriamente`);
-        this.deleteData(data);
+        console.log(`El item numero ${this.userSelected.pkIdUser} se ha borrado satisfactoriamente`);
+        this.deleteData(this.userSelected);
         deleteDialogRef.close();
       });
     deleteDialogRef.componentInstance.cancel
       .subscribe(()=>{
-        console.log('Se ha cancelado la eliminacion');
+        console.log('Se ha cancelado la eliminacion: ',this.userSelected );
         deleteDialogRef.close();
       })
   }
 
   deleteData(data: User){
-    this.userService.deleteUser(data.PkIdUser).subscribe(result=>{
+    console.log(data);
+    this.userService.deleteUser(data.pkIdUser).subscribe(result=>{
       this.updateData(result);
     },err=>console.log('error: ',err));
   }

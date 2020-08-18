@@ -1,26 +1,26 @@
 export interface User {
-  PkIdUser: string;
-  UserName: string;
-  Email: string;
-  PasswordHash: string;
-  TimeStamp: Date;
-  CtStatus: boolean;
-  FkIdSexo: number;
-  Password: string;
+  pkIdUser: string;
+  userName: string;
+  email: string;
+  passwordHash: string;
+  timeStamp: Date;
+  ctStatus: boolean;
+  fkIdSexo: number;
+  password: string;
 }
 
 export interface UserEdit{
 
-  PkIdUser: string;
-  UserName: string;
-  Email: string;
-  FkIdSexo: number;
-  LastPassword: string;
-  NewPassword: string;
+  pkIdUser: string;
+  userName: string;
+  email: string;
+  fkIdSexo: number;
+  lastPassword: string;
+  newPassword: string;
 }
 
 
 export interface UserLogin{
-  Usuario: string;
-  Password: string;
+  usuario: string;
+  password: string;
 }
