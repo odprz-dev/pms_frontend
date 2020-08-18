@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "PmsWeb"
+    }
+  },
+  "defaultProject": "PmsWeb",
+  "cli": {
+    "analytics": false
+  }
 }
