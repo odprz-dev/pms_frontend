@@ -13,12 +13,18 @@ export class AppComponent implements OnInit {
 
   constructor(private userService: UserService){}
 
+  isToggle = true;
+
   ngOnInit(): void {
     this.userService.getUsers().subscribe(
       result=> this.users = result,
       err=>console.log({err}),
       ()=>{}
     )
+  }
+
+  toggleMenu(){
+    this.isToggle = !this.isToggle;
   }
 
 

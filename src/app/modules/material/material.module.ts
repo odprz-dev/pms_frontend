@@ -8,7 +8,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -24,7 +24,7 @@ import {MatListModule} from '@angular/material/list'
     MatIconModule,
     MatMenuModule,
     FlexLayoutModule,
-    MatListModule
+    MatListModule,
   ],
   exports:[
     MatButtonModule,
