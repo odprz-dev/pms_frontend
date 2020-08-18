@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/User/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserModalComponent } from '../user-modal/user-modal.component';
 import { Overlay } from '@angular/cdk/overlay';
+import { DeleteFormComponent } from '../../helpers/delete-form/delete-form.component';
 
 
 @Component({
