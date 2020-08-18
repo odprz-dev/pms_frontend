@@ -23,6 +23,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSortModule} from '@angular/material/sort';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -64,7 +66,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonToggleModule,
     MatDatepickerModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule
+
   ],
   exports:[
     MatButtonModule,
@@ -94,8 +98,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonToggleModule,
     MatDatepickerModule,
     MatSortModule,
-    MatProgressSpinnerModule
-
+    MatProgressSpinnerModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }

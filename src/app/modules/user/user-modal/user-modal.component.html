@@ -34,12 +34,20 @@
 
   <mat-grid-tile>
     <div class="text-inside">
-      <mat-form-field>
-        <input matInput placeholder="FkIdSexo" formControlName="FkIdSexo" required>
+
+        <!-- <input matInput placeholder="FkIdSexo" formControlName="FkIdSexo" required>
         <mat-error *ngIf="userForm.controls.FkIdSexo.hasError('required') && userForm.controls.FkIdSexo.touched">
           Este campo es requerido
-        </mat-error>
-      </mat-form-field>
+        </mat-error> -->
+        <div>
+          <label>Sexo: </label>
+        </div>
+          <mat-radio-group formControlName="FkIdSexo">
+            <mat-radio-button [value]=1>Masculino</mat-radio-button>
+            <mat-radio-button [value]=2>Femenino</mat-radio-button>
+          </mat-radio-group>
+
+
     </div>
   </mat-grid-tile>
 

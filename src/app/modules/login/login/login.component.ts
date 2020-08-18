@@ -10,8 +10,8 @@ import { UserModule } from '../../user/user.module';
 export class LoginComponent implements OnInit {
 
   userLogin: UserLogin =  {
-    Usuario:'',
-    Password: ''
+    usuario:'',
+    password: ''
   }
 
   constructor() { }

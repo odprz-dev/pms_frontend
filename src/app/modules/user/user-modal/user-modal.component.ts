@@ -33,9 +33,7 @@ export class UserModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(result=> {
-      this.userList = result;
-    })
+
     this.userForm = this.fb.group({
       PkIdUser:[],
       UserName: [, [Validators.required, Validators.minLength(7)]],
@@ -45,13 +43,15 @@ export class UserModalComponent implements OnInit {
       Password: [,[Validators.minLength(10), Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,}$")]]
     });
 
+    console.log('modal: ', this._data);
+
     this.userForm.patchValue(this._data);
 
     this.breakPoint = window.innerWidth <=600 ? 1 : 2;
 
   }
 
-  //#region functionality
+
   saveUser(){
     if(this.action === 'new')
         this.saveNew();
@@ -65,7 +65,7 @@ export class UserModalComponent implements OnInit {
 
         this.dialogRef.close({action: this.action, data: result});
       }, err =>{
-        console.log('error: ',err); // TODO: manejo de errores
+        console.log('error: ',err);
       })
   }
 
@@ -85,10 +85,10 @@ export class UserModalComponent implements OnInit {
     console.log(this.wasFormChanged);
     if(this.userForm.dirty){
       this.dialogRef.close({action:'cancel'});
-      // const dialogRef = this.dialog.open() // TODO: notificacion are you discard changes?
+
     }else{
       this.dialogRef.close({action:'cancel'});
-      // this.dialog.closeAll();
+
     }
   }
 
