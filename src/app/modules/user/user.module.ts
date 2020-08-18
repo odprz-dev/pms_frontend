@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HelpersModule } from '../helpers/helpers.module';
 
 
 const userRoutes: Routes = [
@@ -20,6 +21,7 @@ const userRoutes: Routes = [
     MaterialModule,
     CommonModule,
     ReactiveFormsModule,
+    HelpersModule,
     RouterModule.forChild(userRoutes)
   ]
 })

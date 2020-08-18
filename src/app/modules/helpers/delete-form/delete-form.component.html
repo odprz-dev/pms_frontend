@@ -1,0 +1,32 @@
+<div>
+  <div class="add-title">
+    <h2 class="header">Eliminar</h2>
+  </div>
+<div>
+<form [formGroup]="deleteForm" (ngSubmit)="onConfirmDelete()">
+  <mat-grid-list cols="1" rowHeigth="85px">
+    <mat-grid-tile>
+      <div class="text-inside">
+        <label>Escribe la palabra <b>ELIMINAR</b> para continuar.</label>
+        <mat-form-field>
+          <input matInput placeholder="Confirmar" formControlName="confirm" required>
+          <div *ngIf="deleteForm.controls.confirm.touched">
+            <mat-error *ngIf="deleteForm.controls.confirm.hasError('required')">
+              Este campo es requerido
+            </mat-error>
+            <mat-error *ngIf="deleteForm.controls.confirm.hasError('eliminar')">
+              La palabra ingresada no coincide con ELIMINAR
+            </mat-error>
+            <mat-error *ngIf="deleteForm.controls.confirm.hasError('pattern')">
+              Este campo solo permite caracteres de la "A" a la "Z"
+            </mat-error>
+          </div>
+        </mat-form-field>
+        <div class="btn-sec">
+          <button mat-raised-button type="submit" color="warn" class="Update-btn" [disabled]="deleteForm.invalid">Eliminar</button>
+          <button mat-raised-button type="button" class="Discard-btn" (click)="onCancel()">Cancelar</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

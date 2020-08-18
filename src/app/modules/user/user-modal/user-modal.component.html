@@ -13,7 +13,7 @@
           Este campo es requerido
         </mat-error>
         <mat-error *ngIf="userForm.controls.UserName.hasError && userForm.controls.UserName.touched">
-          Por favor ingresa un valor valido con caracteres
+          El nombre de usuario debe tener al menos 7 caracteres.
         </mat-error>
       </mat-form-field>
     </div>

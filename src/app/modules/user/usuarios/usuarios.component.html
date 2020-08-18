@@ -45,7 +45,7 @@
     <td mat-cell *matCellDef="let user">
       <div class="center-buttons-table">
         <button mat-button color="primary" (click)="openDialog('update',user)" >Editar</button>
-        <button mat-button  flex="33"color="accent" (click)="editar(user.pkIdUser)">Eliminar</button>
+        <button mat-button  flex="33"color="accent" (click)="openDeleteDialog(user)">Eliminar</button>
       </div>
     </td>
   </ng-container>

@@ -77,4 +77,26 @@ export class UsuariosComponent implements OnInit {
       this.dataSource.data = this.userList;
   }
 
+
+  openDeleteDialog(data: User){
+    const deleteDialogRef = this.dialog.open(DeleteFormComponent,{width:'350px', disableClose: true});
+    deleteDialogRef.componentInstance.confirmDelete
+      .subscribe(()=>{
+        console.log(`El item numero ${data.PkIdUser} se ha borrado satisfactoriamente`);
+        this.deleteData(data);
+        deleteDialogRef.close();
+      });
+    deleteDialogRef.componentInstance.cancel
+      .subscribe(()=>{
+        console.log('Se ha cancelado la eliminacion');
+        deleteDialogRef.close();
+      })
+  }
+
+  deleteData(data: User){
+    this.userService.deleteUser(data.PkIdUser).subscribe(result=>{
+      this.updateData(result);
+    },err=>console.log('error: ',err));
+  }
+
 }
