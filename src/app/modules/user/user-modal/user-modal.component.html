@@ -1,6 +1,8 @@
 <div>
   <div class="add-title">
-    <h2 class="header">Agregar nuevo usuario</h2>
+    <h2 *ngIf="action==='new'" class="header">Agregar nuevo usuario</h2>
+    <h2 *ngIf="action==='update'" class="header">Editar usuario</h2>
+
   </div>
 <div>
 <form [formGroup]="userForm" (change)="formChanged()" (ngSubmit)="saveUser()">
@@ -34,24 +36,17 @@
 
   <mat-grid-tile>
     <div class="text-inside">
-
-        <!-- <input matInput placeholder="FkIdSexo" formControlName="FkIdSexo" required>
-        <mat-error *ngIf="userForm.controls.FkIdSexo.hasError('required') && userForm.controls.FkIdSexo.touched">
-          Este campo es requerido
-        </mat-error> -->
-        <div>
-          <label>Sexo: </label>
-        </div>
-          <mat-radio-group formControlName="FkIdSexo">
-            <mat-radio-button [value]=1>Masculino</mat-radio-button>
-            <mat-radio-button [value]=2>Femenino</mat-radio-button>
-          </mat-radio-group>
-
-
+      <div>
+        <label>Sexo: </label>
+      </div>
+        <mat-radio-group formControlName="FkIdSexo">
+           <mat-radio-button [value]=1>Masculino</mat-radio-button>
+           <mat-radio-button [value]=2>Femenino</mat-radio-button>
+       </mat-radio-group>
     </div>
   </mat-grid-tile>
 
-  <mat-grid-tile>
+  <mat-grid-tile *ngIf="action=='new'">
     <div class="text-inside">
       <mat-form-field>
         <input matInput  type="password" placeholder="Password" formControlName="Password" required>
@@ -69,6 +64,44 @@
   </mat-grid-tile>
 
 
+  <mat-grid-tile *ngIf="action=='update'">
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput  type="password" placeholder="Contraseña anterior" formControlName="LastPassword" required>
+        <mat-error *ngIf="userForm.controls.LastPassword.hasError('required') && userForm.controls.LastPassword.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.LastPassword.hasError('minlength') && userForm.controls.LastPassword.touched">
+          la contraseña anterior debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.LastPassword.hasError('pattern') && userForm.controls.LastPassword.touched">
+          Ingresar al menos un caracter en mayuscula un caracter en minuscula un simbolo y un numero.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile *ngIf="action=='update'">
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput  type="password" placeholder="Nueva Contraseña" formControlName="NewPassword" required>
+        <mat-error *ngIf="userForm.controls.NewPassword.hasError('required') && userForm.controls.NewPassword.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.NewPassword.hasError('minlength') && userForm.controls.NewPassword.touched">
+          La nueva contraseña debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.NewPassword.hasError('pattern') && userForm.controls.NewPassword.touched">
+          Ingresar al menos un caracter en mayuscula un caracter en minuscula un simbolo y un numero.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+
+
+
 </mat-grid-list>
 <div class="btn-sec">
   <button mat-raised-button type="submit" color="primary" class="Update-btn" [disabled]="userForm.invalid">Guardar</button>
@@ -76,5 +109,5 @@
 </div>
 
 </form>
-<!-- <pre>{{userForm.value | json}}</pre> -->
+<pre>{{userForm.value | json}}</pre>
 </div>

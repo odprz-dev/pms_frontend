@@ -1,4 +1,4 @@
-import { Component, OnInit, Optional, Inject } from '@angular/core';
+import { Component, OnInit, Optional, Inject, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/User/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -9,9 +9,10 @@ import { User } from 'src/app/models/user';
   templateUrl: './user-modal.component.html',
   styleUrls: ['./user-modal.component.scss']
 })
-export class UserModalComponent implements OnInit {
+export class UserModalComponent implements OnInit, AfterViewChecked {
 
-  private action:string;
+
+  action:string;
   private _data:User = {} as User;
   userList: User[] =[];
 
@@ -21,6 +22,7 @@ export class UserModalComponent implements OnInit {
   demoService: any;
 
   constructor(
+    private cdRef : ChangeDetectorRef,
     private userService: UserService,
     private fb: FormBuilder,
     private dialog: MatDialog,
@@ -31,6 +33,10 @@ export class UserModalComponent implements OnInit {
     this.action = data.action;
     this._data ={...data};
   }
+  ngAfterViewChecked(): void {
+    this.action = this.action
+    this.cdRef.detectChanges();
+  }
 
   ngOnInit() {
 
@@ -40,12 +46,23 @@ export class UserModalComponent implements OnInit {
       Email: [, [Validators.required, Validators.email]],
       CtStatus: [true],
       FkIdSexo: [1],
-      Password: [,[Validators.minLength(10), Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,}$")]]
+      Password: ['',[Validators.minLength(10), Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,}$")]],
+      LastPassword: ['',[Validators.minLength(10), Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,}$")]],
+      NewPassword: ['',[Validators.minLength(10), Validators.pattern("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,}$")]]
+
     });
 
     console.log('modal: ', this._data);
 
-    this.userForm.patchValue(this._data);
+    // this.userForm.setValue()
+
+    this.userForm.patchValue({
+      PkIdUser: this.data.pkIdUser,
+      UserName: this._data.userName,
+      Email: this._data.email,
+      FkIdSexo: this._data.fkIdSexo? this._data.fkIdSexo : 1,
+
+    });
 
     this.breakPoint = window.innerWidth <=600 ? 1 : 2;
 
@@ -71,7 +88,7 @@ export class UserModalComponent implements OnInit {
 
   saveExist(){
 
-    this.userService.putUser(this.userForm.controls.PkIdPlace.value, this.userForm.value)
+    this.userService.putUser(this.userForm.controls.PkIdUser.value, this.userForm.value)
     .subscribe(result=>{
       this.dialogRef.close({action:'update',data:result})
 
