@@ -1,14 +1,14 @@
 <mat-nav-list>
   <div class="profile-card">
     <div class="card-header">
-      <h2>Nombre del usuario</h2>
-      <h4>ejemplo@email.com</h4>
+      <h2>{{currentUser.userName}}</h2>
+      <h4>{{currentUser.email}}</h4>
     </div>
     <img src="assets/profile.png" alt="profile">
   </div>
   <mat-divider></mat-divider>
   <h2 matSubheader>Opciones</h2>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Inicio</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="home">Inicio</a>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="usuarios">Usuarios</a>
 
 </mat-nav-list>

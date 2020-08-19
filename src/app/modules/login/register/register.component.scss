@@ -1,0 +1,11 @@
+mat-form-field{
+  width: 100%;
+}
+
+.formFieldWidth480 .mat-form-field-infix {
+  width: 480px;
+}
+
+::ng-deep .mat-form-field-infix {
+  width: 480px !important;
+}

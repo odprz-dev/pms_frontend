@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/User/user.service';
 import { User } from './models/user';
+import { LoginService } from './services/login/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,23 +11,25 @@ import { User } from './models/user';
 })
 export class AppComponent implements OnInit {
   title = 'PmsWeb';
-  users: User[] = []
+  currentUser: User
+  isLoggedIn$: Observable<User> = this.loginService.user$;
 
-  constructor(private userService: UserService){}
+  constructor(private loginService: LoginService){}
 
   isToggle = true;
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(
-      result=> this.users = result,
-      err=>console.log({err}),
-      ()=>{}
-    )
+    let usr = localStorage.getItem('usuario');
+     if(usr!==null){
+       this.loginService.userSubject$.next(JSON.parse(usr));
+     }
   }
 
   toggleMenu(){
     this.isToggle = !this.isToggle;
   }
+
+
 
 
 }

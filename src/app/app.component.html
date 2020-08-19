@@ -1,6 +1,6 @@
 <app-header (toggleSideBarEvent)="toggleMenu()" ></app-header>
 <mat-drawer-container>
-  <mat-drawer mode="side" [opened]='isToggle'>
+  <mat-drawer *ngIf="isLoggedIn$ | async" mode="side" [opened]='isToggle'>
     <app-sidebar></app-sidebar>
   </mat-drawer>
   <mat-drawer-content>

@@ -1,0 +1,94 @@
+<div>
+  <div style="text-align: center;">
+    <h2 class="header">Registro</h2>
+
+  </div>
+<div>
+<form [formGroup]="userForm" (change)="formChanged()" (ngSubmit)="saveUser()">
+<mat-grid-list [cols]="breakPoint" rowHeight="85px"   (window:resize)="onResize($event)">
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput placeholder="Nombre de usuario" formControlName="UserName" required>
+        <mat-error *ngIf="userForm.controls.UserName.hasError('required') && userForm.controls.UserName.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.UserName.hasError('minlength') && userForm.controls.UserName.touched">
+          El nombre de usuario debe tener al menos 7 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="Email" required>
+        <mat-error *ngIf="userForm.controls.Email.hasError('required') && userForm.controls.Email.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.Email.hasError('email') && userForm.controls.Email.touched">
+          El correo debe tener formato @mail.com
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="text-inside">
+      <div>
+        <label>Sexo: </label>
+      </div>
+        <mat-radio-group formControlName="FkIdSexo">
+           <mat-radio-button [value]=1>Masculino</mat-radio-button>
+           <mat-radio-button [value]=2>Femenino</mat-radio-button>
+       </mat-radio-group>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput  type="password" placeholder="Contraseña" formControlName="Password" required>
+        <mat-error *ngIf="userForm.controls.Password.hasError('required') && userForm.controls.Password.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.Password.hasError('minlength') && userForm.controls.Password.touched">
+          El password debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.Password.hasError('pattern') && userForm.controls.Password.touched">
+          Ingresar al menos un caracter en mayuscula un caracter en minuscula un simbolo y un numero.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile >
+    <div class="text-inside">
+      <mat-form-field>
+        <input matInput  type="password" placeholder="Confirmar Contraseña" formControlName="ConfirmPassword" required>
+        <mat-error *ngIf="userForm.controls.ConfirmPassword.hasError('required') && userForm.controls.ConfirmPassword.touched">
+          Este campo es requerido
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.ConfirmPassword.hasError('minlength') && userForm.controls.LastPassword.touched">
+          la contraseña anterior debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.ConfirmPassword.hasError('pattern') && userForm.controls.ConfirmPassword.touched">
+          Ingresar al menos un caracter en mayuscula un caracter en minuscula un simbolo y un numero.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+
+
+
+</mat-grid-list>
+<div style="display: flex; justify-content: center;" class="btn-sec">
+  <button mat-raised-button type="submit" color="primary" class="Update-btn" [disabled]="userForm.invalid">Guardar</button>
+  <button style="margin-left: 1.5rem;" mat-raised-button type="button" class="Discard-btn" (click)="cancel()">Cancelar</button>
+</div>
+
+</form>
+<!-- <pre>{{userForm.value | json}}</pre> -->
+</div>

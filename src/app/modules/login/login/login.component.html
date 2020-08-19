@@ -6,7 +6,7 @@
           <h2>Login</h2>
         </mat-card-title>
       </mat-card-header>
-      <form (submit)="login($event)">
+      <form (submit)="login()">
         <mat-card-content>
           <mat-form-field>
             <input matInput placeholder="Email" [(ngModel)]="userLogin.usuario" type="text" name="email">
@@ -17,8 +17,8 @@
         </mat-card-content>
         <mat-card-actions>
           <div class="center-fix">
-            <button type="submit" mat-raised-button color="primary">Login</button>
-            <button type="button" mat-raised-button color="primary">Registrar</button>
+            <button type="button" mat-raised-button (click)="login()" color="primary">Login</button>
+            <button type="button" mat-raised-button color="primary"(click)="register()">Registrar</button>
           </div>
         </mat-card-actions>
       </form>
