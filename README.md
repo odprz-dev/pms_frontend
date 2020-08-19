@@ -25,6 +25,7 @@ Utiliza LazyLoading en el routing para cargar módulos de manera perezosa
 Para ejecutar la aplicación ejecutar en una consola:
 
 **Instalar dependencias:** npm install
+
 **Ejecutar aplicacion:** ng serve -o
 
 El puerto por defecto es el 4200
