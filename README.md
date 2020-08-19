@@ -1,27 +1,32 @@
-# PmsWeb
+﻿
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
-## Development server
+[![logo_Odprz](https://user-content.gitlab-static.net/7c4eaa91dc957404baa533572ba737deb63db039/68747470733a2f2f692e696d6775722e636f6d2f466c66774d4d692e706e67)](https://user-content.gitlab-static.net/7c4eaa91dc957404baa533572ba737deb63db039/68747470733a2f2f692e696d6775722e636f6d2f466c66774d4d692e706e67)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Aplicación Angular
 
-## Code scaffolding
+La aplicación de demostración permite el login de un usuario, si no se cuenta con un usuario activo, permite el registro de un nuevo usuario.
+ Al estar registrado permite realizar  operaciones CRUD de usuarios,
+Permite añadir un nuevo usuario, modificar un usuario existente o eliminar un usuario, El usuario eliminado solo se inhabilita.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Se cuenta con servicios e interceptores para el manejo de excepciones y notificaciones.
 
-## Build
+Persiste al usuario logueado.  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+# Implementación de angular
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+La aplicación se implemento con componentes de @angular/Material y @angular/flexLayout
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Utiliza LazyLoading en el routing para cargar módulos de manera perezosa
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Para ejecutar la aplicación ejecutar en una consola:
+
+**Instalar dependencias:** npm install
+**Ejecutar aplicacion:** ng serve -o
+
+El puerto por defecto es el 4200
+
+
