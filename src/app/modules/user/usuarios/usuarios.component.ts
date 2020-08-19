@@ -51,7 +51,7 @@ export class UsuariosComponent implements OnInit {
   openDialog(action:string, data: any){
     data.action = action;
     console.log(data);
-    const dialogRef = this.dialog.open(UserModalComponent, {width: '640px', height: '70%' ,   scrollStrategy: this.overlay.scrollStrategies.reposition(), disableClose: true, data: data});
+    const dialogRef = this.dialog.open(UserModalComponent, {width: '640px', height: '43%' ,   scrollStrategy: this.overlay.scrollStrategies.reposition(), disableClose: true, data: data});
     dialogRef.afterClosed()
       .subscribe(result =>{
         console.log('Devolucion del child: ',result)
