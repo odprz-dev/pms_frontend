@@ -1,4 +1,43 @@
-.center-fix{
-  display: flex;
-  justify-content: center;
+// .center-fix{
+//   display: flex;
+//   justify-content: center;
+// }
+
+
+::ng-deep .mat-form-field-infix {
+  width: 32rem !important;
+}
+
+div.login{
+  height: 100%;
+  .background {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    // background: url(assets/background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+  }
+  .container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 15rem;
+    bottom: 0;
+    z-index: 100;
+    .card-wrapper {
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+
+mat-card-title{
+  text-align: center;
 }

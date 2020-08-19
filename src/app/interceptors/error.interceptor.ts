@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       .pipe(
         catchError(err=>{
           if(err instanceof HttpErrorResponse){
-            this.notificationService.emit(`${req.url} | ${err.status} - ${err.error.Message} ;
+            this.notificationService.emit(`${req.url} | ${err.status} - ${JSON.stringify(err.error)} ;
             }`);
           }
           return throwError(err);
