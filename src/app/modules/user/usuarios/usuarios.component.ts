@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserModalComponent } from '../user-modal/user-modal.component';
 import { Overlay } from '@angular/cdk/overlay';
 import { DeleteFormComponent } from '../../helpers/delete-form/delete-form.component';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class UsuariosComponent implements OnInit {
   userSelected: User;
 
   constructor(
+    private notificationService: NotificationService,
     private userService: UserService,
     private dialog: MatDialog,
     private overlay: Overlay){}
@@ -103,6 +105,7 @@ export class UsuariosComponent implements OnInit {
     console.log(data);
     this.userService.deleteUser(data.pkIdUser).subscribe(result=>{
       this.updateData(result);
+      this.notificationService.emitSuccess();
     },err=>console.log('error: ',err));
   }
 

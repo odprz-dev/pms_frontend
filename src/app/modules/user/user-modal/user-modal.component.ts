@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/User/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/models/user';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-user-modal',
@@ -22,6 +23,7 @@ export class UserModalComponent implements OnInit, AfterViewChecked {
   demoService: any;
 
   constructor(
+    private notificationService: NotificationService,
     private cdRef : ChangeDetectorRef,
     private userService: UserService,
     private fb: FormBuilder,
@@ -79,10 +81,11 @@ export class UserModalComponent implements OnInit, AfterViewChecked {
   saveNew(){
     this.userService.postUser(this.userForm.value)
       .subscribe(result=>{
-
+        this.notificationService.emitSuccess();
         this.dialogRef.close({action: this.action, data: result});
       }, err =>{
         console.log('error: ',err);
+        this.notificationService.showError(err);
       })
   }
 
@@ -90,11 +93,12 @@ export class UserModalComponent implements OnInit, AfterViewChecked {
 
     this.userService.putUser(this.userForm.controls.PkIdUser.value, this.userForm.value)
     .subscribe(result=>{
+      this.notificationService.emitSuccess();
       this.dialogRef.close({action:'update',data:result})
 
     }, err=>{
-
       console.log('error: ',err)
+      this.notificationService.showError(err);
     });
   }
 
