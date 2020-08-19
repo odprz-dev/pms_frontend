@@ -106,7 +106,10 @@ export class UsuariosComponent implements OnInit {
     this.userService.deleteUser(data.pkIdUser).subscribe(result=>{
       this.updateData(result);
       this.notificationService.emitSuccess();
-    },err=>console.log('error: ',err));
+    },err=>{
+      console.log('error: ',err);
+      this.notificationService.showError(err);
+    });
   }
 
 }
